@@ -1,0 +1,12 @@
+body {
+    background-color: #5E61F3;
+    color: white;
+}
+
+.container {
+    background-color: blue;
+    display: inline-block;
+    border: 1px solid purple;
+    margin-left: auto;
+    margin-right: auto;
+}

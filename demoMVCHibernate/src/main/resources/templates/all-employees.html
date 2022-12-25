@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="">
+<head>
+  <meta charset="UTF-8">
+  <title>AllEmployees</title>
+  <link href="all-employees.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+<h2>All Employees:</h2><br>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Department</th> <!--создаем одну строку, и указываем, что это шапка таблицы-->
+    <th>Salary</th>
+    <th>Operations</th>
+  </tr>
+  <!--название аттрибута, в котором лежит лист с работниками-->
+  <div th:each="emp : ${allEmps}">
+
+
+
+    <tr>
+      <td th:text="${emp.name}"></td>
+      <td th:text="${emp.surname}"></td>
+      <td th:text="${emp.department}"></td>  <!--и внутри фор ич лупа, прописываем строки для каждого работника-->
+      <td th:text="${emp.salary}"></td>
+      <td>
+        <button><a class="gradient-button" th:href = "@{${emp.id} + '/updateInfo'}" th:text = "'Update'"></a></button><!--пишем название ссылки, чтобы при нажатии кнопки переход был на нее, а уже оттуда на юрл /updateInfo-->
+      </td>
+      <td>
+        <button><a th:href="@{${emp.id} + '/deleteEmployee'}" th:text="'Delete'"></a></button>
+      </td>
+
+    </tr>
+  </div>
+
+  </div>
+</table>
+
+<br>
+
+<!--onclick - я хочу чтобы при нажатии на кнопку метода с гетмаппингом addNewEmployee-->
+<input type="button" value="ADD"
+onclick="window.location.href='addNewEmployee'"
+/>
+
+
+</body>
+</html>
